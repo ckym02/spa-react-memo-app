@@ -7,6 +7,7 @@ import {
   createMemo,
   deleteMemo,
 } from "../memo/functions/memoOperations";
+import "./memo.css";
 
 export const Memo = () => {
   const [memos, setMemos] = useState([]);
@@ -30,7 +31,7 @@ export const Memo = () => {
     setMemos(getAllMemos());
   }, [showCreateMemoForm]);
 
-  const handleAddLinkClick = (e) => {
+  const handleCreateLinkClick = (e) => {
     e.preventDefault();
     setShowEditMemoForm(false);
     setShowCreateMemoForm(true);
@@ -79,10 +80,10 @@ export const Memo = () => {
     if (memos.length === 0) return null;
 
     return (
-      <ol style={{ paddingLeft: 40 }}>
+      <ol>
         {memos.map((memo) => {
           return (
-            <li style={{ listStyle: "none" }} key={memo.id}>
+            <li className="memo-content" key={memo.id}>
               <a href="/#" id={memo.id} onClick={handleMemoClick}>
                 {memo.content.split(/\n/)[0]}
               </a>
@@ -94,33 +95,31 @@ export const Memo = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div style={{ display: "inline-block", margin: 10 }}>
-          {renderMemoList()}
-          <div style={{ paddingLeft: 40 }}>
-            <a href="/#" onClick={handleAddLinkClick}>
-              +
-            </a>
-          </div>
+    <div className="main-content">
+      <div className="memo-lists">
+        {renderMemoList()}
+        <div className="memo-create-link">
+          <a href="/#" onClick={handleCreateLinkClick}>
+            +
+          </a>
         </div>
-        {showCreateMemoForm ? (
-          <MemoForm
-            memoId={memoId}
-            memoContent={memoContent}
-            onSubmit={handleNewMemoSubmit}
-          />
-        ) : null}
-        {showEditMemoForm ? (
-          <MemoForm
-            memoId={memoId}
-            memoContent={memoContent}
-            onMemoContentChange={handleMemoContentChange}
-            onSubmit={handleSubmit}
-            onDelete={() => handleDelete(memoId)}
-          />
-        ) : null}
-      </header>
+      </div>
+      {showCreateMemoForm ? (
+        <MemoForm
+          memoId={memoId}
+          memoContent={memoContent}
+          onSubmit={handleNewMemoSubmit}
+        />
+      ) : null}
+      {showEditMemoForm ? (
+        <MemoForm
+          memoId={memoId}
+          memoContent={memoContent}
+          onMemoContentChange={handleMemoContentChange}
+          onSubmit={handleSubmit}
+          onDelete={() => handleDelete(memoId)}
+        />
+      ) : null}
     </div>
   );
 };

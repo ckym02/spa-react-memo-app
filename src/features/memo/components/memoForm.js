@@ -1,3 +1,5 @@
+import "../memo.css";
+
 export const MemoForm = ({
   memoId,
   memoContent,
@@ -6,25 +8,16 @@ export const MemoForm = ({
   onDelete,
 }) => {
   const renderTextarea = () => {
-    if (!(onMemoContentChange === undefined)) {
-      return (
-        <textarea
-          style={{ display: "block" }}
-          name="content"
-          value={memoContent}
-          rows={4}
-          cols={40}
-          onChange={onMemoContentChange}
-        />
-      );
+    if (onMemoContentChange === undefined) {
+      return <textarea className="textarea" name="content" />;
     }
 
     return (
       <textarea
-        style={{ display: "block" }}
+        className="textarea"
         name="content"
-        rows={4}
-        cols={40}
+        value={memoContent}
+        onChange={onMemoContentChange}
       />
     );
   };
@@ -40,14 +33,16 @@ export const MemoForm = ({
   };
 
   return (
-    <div style={{ display: "inline-block" }}>
+    <div className="memo-form">
       <form onSubmit={onSubmit}>
-        <label style={{ display: "block" }}>
+        <label className="label">
           メモの内容：
           {renderTextarea()}
           <input type="hidden" name="id" value={memoId} />
         </label>
-        <button type="submit">保存</button>
+        <button className="form-button" type="submit">
+          保存
+        </button>
         {renderDeleteButton()}
       </form>
     </div>
