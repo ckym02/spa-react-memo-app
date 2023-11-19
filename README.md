@@ -1,6 +1,7 @@
 # メモアプリ
 
 ## ローカル環境構築
+
 ```
 $ git clone git@github.com:ckym02/spa-react-memo-app.git
 $ cd spa-react-memo-app
@@ -9,6 +10,7 @@ $ npm start
 ```
 
 ## そのほか
+
 - ディレクトリ構成について
   - 参考にした記事
     https://zenn.dev/sakito/articles/af87061a5016e6
