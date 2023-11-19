@@ -3,12 +3,14 @@ import {
   setLocalStorage,
 } from "../../../functions/localStorage";
 
+const MEMO_LOCAL_STORAGE_KEY = "memo_key";
+
 export const initMemo = () => {
-  setLocalStorage("test_key", []);
+  setLocalStorage(MEMO_LOCAL_STORAGE_KEY, []);
 };
 
 export const getAllMemos = () => {
-  return getLocalStorage("test_key");
+  return getLocalStorage(MEMO_LOCAL_STORAGE_KEY);
 };
 
 export const editMemo = (memos, id, content) => {
@@ -16,19 +18,19 @@ export const editMemo = (memos, id, content) => {
   const newMemos = filteredMemos.push({ id: id, content: content });
   const sortedMemos = newMemos.sort((a, b) => a.id - b.id);
 
-  setLocalStorage("test_key", sortedMemos);
+  setLocalStorage(MEMO_LOCAL_STORAGE_KEY, sortedMemos);
 };
 
 export const createMemo = (memos, content) => {
   const latestMemo = memos.slice(-1)[0];
-  const newMemoId = latestMemo ? latestMemo + 1 : 1;
+  const newMemoId = latestMemo ? latestMemo.id + 1 : 1;
   memos.push({ id: newMemoId, content: content });
 
-  setLocalStorage("test_key", memos);
+  setLocalStorage(MEMO_LOCAL_STORAGE_KEY, memos);
 };
 
 export const deleteMemo = (memos, id) => {
   const filteredMemos = memos.filter((m) => m.id !== id);
 
-  setLocalStorage("test_key", filteredMemos);
+  setLocalStorage(MEMO_LOCAL_STORAGE_KEY, filteredMemos);
 };
