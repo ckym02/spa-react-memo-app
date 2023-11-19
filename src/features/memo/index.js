@@ -34,7 +34,7 @@ export const Memo = () => {
     setShowCreateMemoForm(true);
   };
 
-  const handleNewSubmit = (e) => {
+  const handleNewMemoSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -54,7 +54,7 @@ export const Memo = () => {
     setMemoId(targetMemo.id);
   };
 
-  const handleChange = (e) => {
+  const handleMemoContentChange = (e) => {
     setMemoContent(e.target.value);
   };
 
@@ -104,16 +104,16 @@ export const Memo = () => {
           <MemoForm
             memoId={memoId}
             memoContent={memoContent}
-            handleSubmit={handleNewSubmit}
+            onSubmit={handleNewMemoSubmit}
           />
         ) : null}
         {showEditMemoForm ? (
           <MemoForm
             memoId={memoId}
             memoContent={memoContent}
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            handleDelete={() => handleDelete(memoId)}
+            onMemoContentChange={handleMemoContentChange}
+            onSubmit={handleSubmit}
+            onDelete={() => handleDelete(memoId)}
           />
         ) : null}
       </header>

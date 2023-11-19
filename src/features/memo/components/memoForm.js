@@ -1,12 +1,12 @@
 export const MemoForm = ({
   memoId,
   memoContent,
-  handleSubmit,
-  handleChange,
-  handleDelete,
+  onMemoContentChange,
+  onSubmit,
+  onDelete,
 }) => {
   const renderTextarea = () => {
-    if (!(handleChange === undefined)) {
+    if (!(onMemoContentChange === undefined)) {
       return (
         <textarea
           style={{ display: "block" }}
@@ -14,7 +14,7 @@ export const MemoForm = ({
           value={memoContent}
           rows={4}
           cols={40}
-          onChange={handleChange}
+          onChange={onMemoContentChange}
         />
       );
     }
@@ -29,20 +29,26 @@ export const MemoForm = ({
     );
   };
 
+  const renderDeleteButton = () => {
+    if (onDelete === undefined) return null;
+
+    return (
+      <button type="button" onClick={() => onDelete()}>
+        削除
+      </button>
+    );
+  };
+
   return (
     <div style={{ display: "inline-block" }}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <label style={{ display: "block" }}>
           メモの内容：
           {renderTextarea()}
           <input type="hidden" name="id" value={memoId} />
         </label>
         <button type="submit">保存</button>
-        {handleDelete ? (
-          <button type="button" onClick={() => handleDelete()}>
-            削除
-          </button>
-        ) : null}
+        {renderDeleteButton()}
       </form>
     </div>
   );
