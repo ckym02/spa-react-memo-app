@@ -16,6 +16,9 @@
       "npm run fix"
     ]
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

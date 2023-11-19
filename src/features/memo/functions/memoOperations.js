@@ -1,9 +1,9 @@
 import {
   getLocalStorage,
   setLocalStorage,
-} from "../../../functions/localStorage";
+} from '../../../functions/localStorage';
 
-const MEMO_LOCAL_STORAGE_KEY = "memo_key";
+const MEMO_LOCAL_STORAGE_KEY = 'memo_key';
 
 export const initMemo = () => {
   setLocalStorage(MEMO_LOCAL_STORAGE_KEY, []);

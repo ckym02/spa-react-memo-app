@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { MemoForm } from "./components/memoForm";
+import { useEffect, useState } from 'react';
+import { MemoForm } from './components/memoForm';
 import {
   initMemo,
   getAllMemos,
   editMemo,
   createMemo,
   deleteMemo,
-} from "../memo/functions/memoOperations";
-import "./memo.css";
+} from '../memo/functions/memoOperations';
+import './memo.css';
 
 export const Memo = () => {
   const [memos, setMemos] = useState([]);
   const [memoId, setMemoId] = useState(undefined);
-  const [memoContent, setMemoContent] = useState("");
+  const [memoContent, setMemoContent] = useState('');
   const [showEditMemoForm, setShowEditMemoForm] = useState(false);
   const [showCreateMemoForm, setShowCreateMemoForm] = useState(false);
 

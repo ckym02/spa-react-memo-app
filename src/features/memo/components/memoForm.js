@@ -1,4 +1,4 @@
-import "../memo.css";
+import '../memo.css';
 
 export const MemoForm = ({
   memoId,
