@@ -94,6 +94,31 @@ export const Memo = () => {
     );
   };
 
+  const renderMemoForm = () => {
+    if (showCreateMemoForm) {
+      return (
+        <MemoForm
+          memoId={memoId}
+          memoContent={memoContent}
+          onSubmit={handleNewMemoSubmit}
+        />
+      );
+    }
+    if (showEditMemoForm) {
+      return (
+        <MemoForm
+          memoId={memoId}
+          memoContent={memoContent}
+          onMemoContentChange={handleMemoContentChange}
+          onSubmit={handleSubmit}
+          onDelete={() => handleDelete(memoId)}
+        />
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div className="main-content">
       <div className="memo-lists">
@@ -104,22 +129,7 @@ export const Memo = () => {
           </a>
         </div>
       </div>
-      {showCreateMemoForm ? (
-        <MemoForm
-          memoId={memoId}
-          memoContent={memoContent}
-          onSubmit={handleNewMemoSubmit}
-        />
-      ) : null}
-      {showEditMemoForm ? (
-        <MemoForm
-          memoId={memoId}
-          memoContent={memoContent}
-          onMemoContentChange={handleMemoContentChange}
-          onSubmit={handleSubmit}
-          onDelete={() => handleDelete(memoId)}
-        />
-      ) : null}
+      <div className="memo-form">{renderMemoForm()}</div>
     </div>
   );
 };

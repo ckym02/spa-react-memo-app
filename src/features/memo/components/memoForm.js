@@ -33,18 +33,16 @@ export const MemoForm = ({
   };
 
   return (
-    <div className="memo-form">
-      <form onSubmit={onSubmit}>
-        <label className="label">
-          メモの内容：
-          {renderTextarea()}
-          <input type="hidden" name="id" value={memoId} />
-        </label>
-        <button className="form-button" type="submit">
-          保存
-        </button>
-        {renderDeleteButton()}
-      </form>
-    </div>
+    <form onSubmit={onSubmit}>
+      <label className="label">
+        メモの内容：
+        {renderTextarea()}
+        <input type="hidden" name="id" value={memoId} />
+      </label>
+      <button className="form-button" type="submit">
+        保存
+      </button>
+      {renderDeleteButton()}
+    </form>
   );
 };
