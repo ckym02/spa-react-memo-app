@@ -15,10 +15,20 @@ export const Memo = () => {
   const [showEditMemoForm, setShowEditMemoForm] = useState(false);
   const [showCreateMemoForm, setShowCreateMemoForm] = useState(false);
 
-  // 初期値の設定
   useEffect(() => {
-    initMemo();
+    if (getAllMemos() === null) {
+      initMemo();
+    }
+    setMemos(getAllMemos());
   }, []);
+
+  useEffect(() => {
+    setMemos(getAllMemos());
+  }, [showEditMemoForm]);
+
+  useEffect(() => {
+    setMemos(getAllMemos());
+  }, [showCreateMemoForm]);
 
   const handleAddLinkClick = (e) => {
     e.preventDefault();
@@ -32,7 +42,6 @@ export const Memo = () => {
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
     createMemo(memos, formJson.content);
-    setMemos(getAllMemos());
     setShowCreateMemoForm(false);
   };
 
@@ -63,7 +72,6 @@ export const Memo = () => {
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
     editMemo(memos, Number(formJson.id), formJson.content);
-    setMemos(getAllMemos());
     setShowEditMemoForm(false);
   };
 
