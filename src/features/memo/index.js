@@ -14,7 +14,6 @@ export const Memo = () => {
   const [memoId, setMemoId] = useState(undefined);
   const [memoContent, setMemoContent] = useState('');
   const [showEditMemoForm, setShowEditMemoForm] = useState(false);
-  const [showCreateMemoForm, setShowCreateMemoForm] = useState(false);
 
   useEffect(() => {
     if (getAllMemos() === null) {
@@ -27,30 +26,21 @@ export const Memo = () => {
     setMemos(getAllMemos());
   }, [showEditMemoForm]);
 
-  useEffect(() => {
-    setMemos(getAllMemos());
-  }, [showCreateMemoForm]);
-
   const handleCreateLinkClick = (e) => {
     e.preventDefault();
-    setShowEditMemoForm(false);
-    setShowCreateMemoForm(true);
-  };
 
-  const handleNewMemoSubmit = (e) => {
-    e.preventDefault();
+    const newMemoContent = '新規メモ';
+    const newMemoId = createMemo(memos, newMemoContent);
+    setShowEditMemoForm(true);
 
-    const formData = new FormData(e.target);
-    const formJson = Object.fromEntries(formData.entries());
-    createMemo(memos, formJson.content);
-    setShowCreateMemoForm(false);
+    setMemoId(newMemoId);
+    setMemoContent(newMemoContent);
   };
 
   const handleMemoClick = (e) => {
     e.preventDefault();
 
     setShowEditMemoForm(true);
-    setShowCreateMemoForm(false);
 
     const memoId = Number(e.currentTarget.id);
     const targetMemo = memos.find((m) => m.id === memoId);
@@ -95,15 +85,6 @@ export const Memo = () => {
   };
 
   const renderMemoForm = () => {
-    if (showCreateMemoForm) {
-      return (
-        <MemoForm
-          memoId={memoId}
-          memoContent={memoContent}
-          onSubmit={handleNewMemoSubmit}
-        />
-      );
-    }
     if (showEditMemoForm) {
       return (
         <MemoForm

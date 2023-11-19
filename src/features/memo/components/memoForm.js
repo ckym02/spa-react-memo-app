@@ -7,42 +7,24 @@ export const MemoForm = ({
   onSubmit,
   onDelete,
 }) => {
-  const renderTextarea = () => {
-    if (onMemoContentChange === undefined) {
-      return <textarea className="textarea" name="content" />;
-    }
-
-    return (
-      <textarea
-        className="textarea"
-        name="content"
-        value={memoContent}
-        onChange={onMemoContentChange}
-      />
-    );
-  };
-
-  const renderDeleteButton = () => {
-    if (onDelete === undefined) return null;
-
-    return (
-      <button type="button" onClick={() => onDelete()}>
-        削除
-      </button>
-    );
-  };
-
   return (
     <form onSubmit={onSubmit}>
       <label className="label">
         メモの内容：
-        {renderTextarea()}
+        <textarea
+          className="textarea"
+          name="content"
+          value={memoContent}
+          onChange={onMemoContentChange}
+        />
         <input type="hidden" name="id" value={memoId} />
       </label>
       <button className="form-button" type="submit">
         保存
       </button>
-      {renderDeleteButton()}
+      <button type="button" onClick={() => onDelete()}>
+        削除
+      </button>
     </form>
   );
 };

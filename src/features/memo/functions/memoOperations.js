@@ -27,6 +27,7 @@ export const createMemo = (memos, content) => {
   memos.push({ id: newMemoId, content: content });
 
   setLocalStorage(MEMO_LOCAL_STORAGE_KEY, memos);
+  return newMemoId;
 };
 
 export const deleteMemo = (memos, id) => {
