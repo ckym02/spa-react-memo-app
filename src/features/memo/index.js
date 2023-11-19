@@ -82,8 +82,8 @@ export const Memo = () => {
       <ol style={{ paddingLeft: 40 }}>
         {memos.map((memo) => {
           return (
-            <li style={{ listStyle: "none" }}>
-              <a href="/#" id={memo.id} key={memo.id} onClick={handleMemoClick}>
+            <li style={{ listStyle: "none" }} key={memo.id}>
+              <a href="/#" id={memo.id} onClick={handleMemoClick}>
                 {memo.content.split(/\n/)[0]}
               </a>
             </li>
