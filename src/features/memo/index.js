@@ -20,14 +20,6 @@ export const Memo = () => {
     initMemo();
   }, []);
 
-  useEffect(() => {
-    setMemos(getAllMemos());
-  }, [showEditMemoForm]);
-
-  useEffect(() => {
-    setMemos(getAllMemos());
-  }, [showCreateMemoForm]);
-
   const handleAddLinkClick = (e) => {
     e.preventDefault();
     setShowEditMemoForm(false);
@@ -40,18 +32,20 @@ export const Memo = () => {
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
     createMemo(memos, formJson.content);
+    setMemos(getAllMemos());
     setShowCreateMemoForm(false);
   };
 
   const handleMemoClick = (e) => {
     e.preventDefault();
 
-    const memoId = Number(e.currentTarget.id);
-    const targetMemo = memos.find((m) => m.id === memoId);
     setShowEditMemoForm(true);
     setShowCreateMemoForm(false);
-    setMemoContent(targetMemo.content);
+
+    const memoId = Number(e.currentTarget.id);
+    const targetMemo = memos.find((m) => m.id === memoId);
     setMemoId(targetMemo.id);
+    setMemoContent(targetMemo.content);
   };
 
   const handleMemoContentChange = (e) => {
@@ -69,11 +63,13 @@ export const Memo = () => {
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
     editMemo(memos, Number(formJson.id), formJson.content);
+    setMemos(getAllMemos());
     setShowEditMemoForm(false);
   };
 
   const renderMemoList = () => {
     if (memos.length === 0) return null;
+
     return (
       <ol style={{ paddingLeft: 40 }}>
         {memos.map((memo) => {
