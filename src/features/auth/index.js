@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useAuthContext } from '../../contexts/authContext';
 
 export const Login = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useAuthContext();
+
   const handleLoginButtonClick = () => {
     setIsLoggedIn(!isLoggedIn);
   };

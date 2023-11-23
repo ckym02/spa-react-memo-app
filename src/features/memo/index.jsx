@@ -8,12 +8,14 @@ import {
   deleteMemo,
 } from './functions/memoOperations';
 import './memo.css';
+import { useAuthContext } from '../../contexts/authContext';
 
 export const Memo = () => {
   const [memos, setMemos] = useState([]);
   const [memoId, setMemoId] = useState(undefined);
   const [memoContent, setMemoContent] = useState('');
   const [showEditMemoForm, setShowEditMemoForm] = useState(false);
+  const { isLoggedIn } = useAuthContext();
 
   useEffect(() => {
     if (getAllMemos().length === 0) {
@@ -79,6 +81,18 @@ export const Memo = () => {
     );
   };
 
+  const renderMemoCreateLink = () => {
+    if (isLoggedIn) {
+      return (
+        <div className="memo-create-link" onClick={handleCreateLinkClick}>
+          +
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   const renderMemoForm = () => {
     if (showEditMemoForm) {
       return (
@@ -99,9 +113,7 @@ export const Memo = () => {
     <div className="main-content">
       <div className="memo-lists">
         {renderMemoList()}
-        <div className="memo-create-link" onClick={handleCreateLinkClick}>
-          +
-        </div>
+        {renderMemoCreateLink()}
       </div>
       <div className="memo-form">{renderMemoForm()}</div>
     </div>

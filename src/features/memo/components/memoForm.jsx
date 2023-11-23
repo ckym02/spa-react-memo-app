@@ -1,3 +1,4 @@
+import { useAuthContext } from '../../../contexts/authContext';
 import './memoForm.css';
 
 export const MemoForm = ({
@@ -7,6 +8,24 @@ export const MemoForm = ({
   onSubmit,
   onDelete,
 }) => {
+  const { isLoggedIn } = useAuthContext();
+
+  const renderOperationButton = () => {
+    if (isLoggedIn) {
+      return (
+        <>
+          <button className="form-button" type="submit">
+            保存
+          </button>
+          <button type="button" onClick={() => onDelete()}>
+            削除
+          </button>
+        </>
+      );
+    }
+
+    return null;
+  };
   return (
     <form onSubmit={onSubmit}>
       <label className="label">
@@ -19,12 +38,7 @@ export const MemoForm = ({
         />
         <input type="hidden" name="id" value={memoId} />
       </label>
-      <button className="form-button" type="submit">
-        保存
-      </button>
-      <button type="button" onClick={() => onDelete()}>
-        削除
-      </button>
+      {renderOperationButton()}
     </form>
   );
 };
