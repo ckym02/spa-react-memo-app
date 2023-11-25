@@ -17,17 +17,16 @@ $ npm start
     https://hello.shelfy.co.jp/76c13c6e85564653b335ec954d17da09
   ```
   |--src
-  | |--App.test.js
   | |--features # 機能に依存するComponentや関数など
   | | |--memo # メモ機能に依存するComponentや関数など
   | | | |--components
-  | | | | |--memoForm.js
+  | | | | |--memoForm.jsx
   | | | |--functions
   | | | | |--memoOperations.js
-  | | | |--index.js # componentsを組み合わせる
+  | | | |--index.jsx # componentsを組み合わせる
   | | | |--memo.css
   | |--functions # 機能に依存しない関数
   | | |--localStorage.js
   | |--index.css
-  | |--index.js # featuresにある機能を組み合わせる
+  | |--index.jsx # featuresにある機能を組み合わせる
   ```

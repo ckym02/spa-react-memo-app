@@ -6,7 +6,7 @@ import {
   editMemo,
   createMemo,
   deleteMemo,
-} from '../memo/functions/memoOperations';
+} from './functions/memoOperations';
 import './memo.css';
 
 export const Memo = () => {
