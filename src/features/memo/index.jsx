@@ -22,9 +22,7 @@ export const Memo = () => {
     setMemos(getAllMemos());
   }, []);
 
-  const handleCreateLinkClick = (e) => {
-    e.preventDefault();
-
+  const handleCreateLinkClick = () => {
     const newMemoContent = '新規メモ';
     const newMemoId = createMemo(memos, newMemoContent);
     setShowEditMemoForm(true);
@@ -34,8 +32,6 @@ export const Memo = () => {
   };
 
   const handleMemoClick = (id, content) => {
-    // e.preventDefault();
-
     setShowEditMemoForm(true);
 
     setMemoId(id);
@@ -70,13 +66,12 @@ export const Memo = () => {
       <ol>
         {memos.map((memo) => {
           return (
-            <li className="memo-content" key={memo.id}>
-              <a
-                href="/#"
-                onClick={() => handleMemoClick(memo.id, memo.content)}
-              >
-                {memo.content.split(/\n/)[0]}
-              </a>
+            <li
+              className="memo-content"
+              key={memo.id}
+              onClick={() => handleMemoClick(memo.id, memo.content)}
+            >
+              {memo.content.split(/\n/)[0]}
             </li>
           );
         })}
@@ -104,10 +99,8 @@ export const Memo = () => {
     <div className="main-content">
       <div className="memo-lists">
         {renderMemoList()}
-        <div className="memo-create-link">
-          <a href="/#" onClick={handleCreateLinkClick}>
-            +
-          </a>
+        <div className="memo-create-link" onClick={handleCreateLinkClick}>
+          +
         </div>
       </div>
       <div className="memo-form">{renderMemoForm()}</div>

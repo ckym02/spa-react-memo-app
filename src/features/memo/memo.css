@@ -11,10 +11,12 @@
 .memo-content {
   list-style: none;
   margin-top: 10px;
+  text-decoration: underline;
 }
 
 .memo-create-link {
   padding-left: 40px;
+  text-decoration: underline;
 }
 
 .memo-form {
