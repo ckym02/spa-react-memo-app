@@ -20,7 +20,8 @@ $ npm start
   | |--features # 機能に依存するComponentや関数など
   | | |--memo # メモ機能に依存するComponentや関数など
   | | | |--components
-  | | | | |--memoForm.jsx
+  | | | | |--MemoForm.jsx
+  | | | | |--memoForm.css
   | | | |--functions
   | | | | |--memoOperations.js
   | | | |--index.jsx # componentsを組み合わせる
