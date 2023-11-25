@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MemoForm } from './components/memoForm';
+import { MemoForm } from './components/MemoForm';
 import {
   initMemo,
   getAllMemos,
