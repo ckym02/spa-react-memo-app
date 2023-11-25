@@ -11,11 +11,22 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "lint-staged": {
+    "*.{jsx,css,md}": [
+      "npm run fix"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "prettier --check . && eslint .",
+    "fix": "prettier --write . && eslint --fix .",
+    "lint-staged": "lint-staged"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +45,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3"
   }
 }

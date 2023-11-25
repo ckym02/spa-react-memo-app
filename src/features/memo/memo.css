@@ -1,0 +1,27 @@
+.main-content {
+  display: flex;
+  margin: 10px;
+}
+
+.memo-lists {
+  width: 50%;
+  margin-right: 10px;
+}
+
+.memo-content {
+  list-style: none;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
+.memo-create-link {
+  padding-left: 40px;
+  text-decoration: underline;
+}
+
+.memo-form {
+  width: 50%;
+  margin-left: 10px;
+  padding-top: 16px;
+  padding-right: 40px;
+}
