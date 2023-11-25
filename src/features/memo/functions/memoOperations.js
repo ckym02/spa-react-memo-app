@@ -10,7 +10,7 @@ export const initMemo = () => {
 };
 
 export const getAllMemos = () => {
-  return getLocalStorage(MEMO_LOCAL_STORAGE_KEY);
+  return getLocalStorage(MEMO_LOCAL_STORAGE_KEY) || [];
 };
 
 export const editMemo = (memos, id, content) => {

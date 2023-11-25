@@ -16,7 +16,7 @@ export const Memo = () => {
   const [showEditMemoForm, setShowEditMemoForm] = useState(false);
 
   useEffect(() => {
-    if (getAllMemos() === null) {
+    if (getAllMemos().length === 0) {
       initMemo();
     }
     setMemos(getAllMemos());
