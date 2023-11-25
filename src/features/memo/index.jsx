@@ -33,15 +33,13 @@ export const Memo = () => {
     setMemoContent(newMemoContent);
   };
 
-  const handleMemoClick = (e) => {
-    e.preventDefault();
+  const handleMemoClick = (id, content) => {
+    // e.preventDefault();
 
     setShowEditMemoForm(true);
 
-    const memoId = Number(e.currentTarget.id);
-    const targetMemo = memos.find((m) => m.id === memoId);
-    setMemoId(targetMemo.id);
-    setMemoContent(targetMemo.content);
+    setMemoId(id);
+    setMemoContent(content);
   };
 
   const handleMemoContentChange = (e) => {
@@ -73,7 +71,10 @@ export const Memo = () => {
         {memos.map((memo) => {
           return (
             <li className="memo-content" key={memo.id}>
-              <a href="/#" id={memo.id} onClick={handleMemoClick}>
+              <a
+                href="/#"
+                onClick={() => handleMemoClick(memo.id, memo.content)}
+              >
                 {memo.content.split(/\n/)[0]}
               </a>
             </li>
