@@ -22,10 +22,6 @@ export const Memo = () => {
     setMemos(getAllMemos());
   }, []);
 
-  useEffect(() => {
-    setMemos(getAllMemos());
-  }, [showEditMemoForm]);
-
   const handleCreateLinkClick = (e) => {
     e.preventDefault();
 
@@ -54,6 +50,7 @@ export const Memo = () => {
 
   const handleDelete = (id) => {
     deleteMemo(memos, id);
+    setMemos(getAllMemos());
     setShowEditMemoForm(false);
   };
 
@@ -63,6 +60,8 @@ export const Memo = () => {
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
     editMemo(memos, Number(formJson.id), formJson.content);
+
+    setMemos(getAllMemos());
     setShowEditMemoForm(false);
   };
 
