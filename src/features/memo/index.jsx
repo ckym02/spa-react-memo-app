@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAuthContext } from '../../contexts/authContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { MemoForm } from './components/MemoForm';
 import {
   initMemo,

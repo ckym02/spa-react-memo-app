@@ -18,7 +18,7 @@ $ npm start
   ```
   |--src
   | |--contexts
-  | | |--authContext.js
+  | | |--AuthContext.js
   | |--features # 機能に依存するComponentや関数など
   | | |--auth # 認証機能に依存するComponentや関数など
   | | | |--index.jsx
