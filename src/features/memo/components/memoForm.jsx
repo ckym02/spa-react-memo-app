@@ -26,6 +26,7 @@ export const MemoForm = ({
 
     return null;
   };
+
   return (
     <form onSubmit={onSubmit}>
       <label className="label">

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useAuthContext } from '../../contexts/authContext';
 import { MemoForm } from './components/MemoForm';
 import {
   initMemo,
@@ -8,7 +9,6 @@ import {
   deleteMemo,
 } from './functions/memoOperations';
 import './memo.css';
-import { useAuthContext } from '../../contexts/authContext';
 
 export const Memo = () => {
   const [memos, setMemos] = useState([]);
