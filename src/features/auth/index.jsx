@@ -1,11 +1,9 @@
 import { useAuthContext } from '../../contexts/AuthContext';
 
 export const Login = () => {
-  const { isLoggedIn, setIsLoggedIn } = useAuthContext();
+  const { isLoggedIn, login, logout } = useAuthContext();
 
-  const handleLoginButtonClick = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
+  const handleLoginButtonClick = () => (isLoggedIn ? logout() : login());
 
   return (
     <div style={{ paddingTop: 10, paddingRight: 40, textAlign: 'right' }}>
