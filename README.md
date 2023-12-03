@@ -17,7 +17,11 @@ $ npm start
     https://hello.shelfy.co.jp/76c13c6e85564653b335ec954d17da09
   ```
   |--src
+  | |--contexts
+  | | |--AuthContext.js
   | |--features # 機能に依存するComponentや関数など
+  | | |--auth # 認証機能に依存するComponentや関数など
+  | | | |--index.jsx
   | | |--memo # メモ機能に依存するComponentや関数など
   | | | |--components
   | | | | |--MemoForm.jsx
